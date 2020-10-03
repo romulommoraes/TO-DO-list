@@ -1,5 +1,6 @@
 const Usuario = require('../models').Usuario
 
+
 exports.listAll = (req, res) => {
     Usuario.findAll().then(usuarios => {
         res.send(usuarios)
@@ -7,13 +8,10 @@ exports.listAll = (req, res) => {
     })
 }
 
-
-
-
 exports.createOne = (req, res) => {
     console.log(Usuario)
-    const { nome, email } = req.body
-    Usuario.create({nome, email}).then(usuario => {
+    const { nome, email, senha } = req.body
+    Usuario.create({nome, email, senha}).then(usuario => {
         res.send(usuario)
     }).catch(error => {
         res.send(error)
